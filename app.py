@@ -13,8 +13,8 @@ from flask import Flask, request
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 ADMIN_CHAT_ID = int(os.getenv("ADMIN_CHAT_ID", "0"))
 
-REG_LINK = "http://khuyenmaiu888.link"
-WEBAPP_LINK = "hhttp://khuyenmaiu888.link"  # hiện chưa dùng, để sẵn
+REG_LINK = "https://u888h8.com?f=5051627"
+WEBAPP_LINK = "https://u888h8.com?f=5051627"  # hiện chưa dùng, để sẵn
 
 # Cấu hình giữ bot "thức"
 ENABLE_KEEP_ALIVE = os.getenv("ENABLE_KEEP_ALIVE", "false").lower() == "true"
@@ -240,7 +240,7 @@ def handle_text(message):
             "Mình vào U888 lên vốn theo mốc để nhận khuyến mãi giúp em nhé.\n"
             "Lên thành công mình gửi *ảnh chuyển khoản* để em cộng điểm trực tiếp vào tài khoản cho mình ạ.\n\n"
             "Có bất cứ thắc mắc gì nhắn tin trực tiếp cho CSKH U888:\n"
-            "👉 [CSKH U888](https://t.me/thuyvy1113)\n"
+            "👉 [Trọng Đức CSKH U888](https://t.me/trongducbcr3979)\n"
         )
 
         try:
