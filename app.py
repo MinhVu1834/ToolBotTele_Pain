@@ -240,7 +240,7 @@ def handle_text(message):
             "Mình vào U888 lên vốn theo mốc để nhận khuyến mãi giúp em nhé.\n"
             "Lên thành công mình gửi *ảnh chuyển khoản* để em cộng điểm trực tiếp vào tài khoản cho mình ạ.\n\n"
             "Có bất cứ thắc mắc gì nhắn tin trực tiếp cho CSKH U888:\n"
-            "👉 [Trọng Đức CSKH U888](https://t.me/trongducbcr3979)\n"
+            "👉 [Bé Chang CSKH U888](https://t.me/bechangne141)\n"
         )
 
         try:
