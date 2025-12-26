@@ -207,8 +207,7 @@ def handle_text(message):
                 )
             )
 
-            bot.send_message(chat_id, "✅ Em đã nhận đủ thông tin, em xử lý và cộng điểm cho mình ngay nhé ạ ❤️
-Thời gian hỗ trợ nhanh nhất là (13h~22h hàng ngày ạ, nhắn tin telegram của CSKH @bechangne141 hỗ trợ nhanh nhất )")
+            bot.send_message(chat_id, "✅ Em đã nhận đủ thông tin, em xử lý và cộng điểm cho mình ngay nhé ạ ❤️ Thời gian hỗ trợ nhanh nhất là (13h~22h hàng ngày ạ, nhắn tin telegram của CSKH @bechangne141 hỗ trợ nhanh nhất )")
         except Exception as e:
             print("Lỗi gửi admin:", e)
             bot.send_message(chat_id, "⚠️ Em gửi thông tin bị lỗi, mình đợi em 1 chút hoặc nhắn CSKH giúp em nhé ạ.")
