@@ -23,7 +23,7 @@ PING_INTERVAL = int(os.getenv("PING_INTERVAL", "300"))  # 300 giây = 5 phút
 
 # ================== KHỞI TẠO BOT & FLASK ==================
 
-bot = telebot.TeleBot(BOT_TOKEN, threaded=False)
+bot = telebot.TeleBot(BOT_TOKEN)
 server = Flask(__name__)
 
 # Lưu trạng thái user
