@@ -13,8 +13,8 @@ from flask import Flask, request
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 ADMIN_CHAT_ID = int(os.getenv("ADMIN_CHAT_ID", "0"))
 
-REG_LINK = "https://u888h8.com?f=5051627"
-WEBAPP_LINK = "https://u888h8.com?f=5051627"  # hiện chưa dùng, để sẵn
+REG_LINK = "https://u888h8.com?f=5059859"
+WEBAPP_LINK = "https://u888h8.com?f=5059859"  # hiện chưa dùng, để sẵn
 
 # Cấu hình giữ bot "thức"
 ENABLE_KEEP_ALIVE = os.getenv("ENABLE_KEEP_ALIVE", "false").lower() == "true"
@@ -23,7 +23,7 @@ PING_INTERVAL = int(os.getenv("PING_INTERVAL", "300"))  # 300 giây = 5 phút
 
 # ================== KHỞI TẠO BOT & FLASK ==================
 
-bot = telebot.TeleBot(BOT_TOKEN)
+bot = telebot.TeleBot(BOT_TOKEN, threaded=False)
 server = Flask(__name__)
 
 # Lưu trạng thái user
@@ -96,7 +96,7 @@ def ask_account_status(chat_id):
     try:
         bot.send_photo(
             chat_id,
-            "AgACAgUAAxkBAAMfaU1a5tH4Vp17yUK9M0MXPVl6A4YAAqcOaxsiZGhW07O4Ox6oOtABAAMCAAN5AAM2BA",
+            "AgACAgUAAxkBAAMLaU4hPt1IQAocMD9eZ2S4Lq2bBioAArILaxu0c3FWfx7PHAEF9KwBAAMCAAN5AAM2BA",
             caption=text,
             reply_markup=markup
         )
@@ -141,7 +141,7 @@ def callback_handler(call):
         try:
             bot.send_photo(
                 chat_id,
-                "AgACAgUAAxkBAAMhaU1bDunecn4u0fRRZXqKO-ybtuMAAqgOaxsiZGhW1NfOOd7BziQBAAMCAAN5AAM2BA",
+                "AgACAgUAAxkBAAMNaU4hcBWaiSorWsAIR3trbXRcVNwAArMLaxu0c3FWET-YirRSSM0BAAMCAAN5AAM2BA",
                 caption=text,
                 reply_markup=markup
             )
@@ -165,7 +165,7 @@ def ask_for_username(chat_id):
     try:
         bot.send_photo(
             chat_id,
-            "AgACAgUAAxkBAAMjaU1bQZPBfya6mA55Wnh5w7WZg1EAAqkOaxsiZGhW1_IcyZuBAQMBAAMCAAN5AAM2BA",
+            "AgACAgUAAxkBAAMPaU4hhk-x1WRUlXoO1it7nxQPOyYAArQLaxu0c3FWgg0sJOHGIygBAAMCAAN5AAM2BA",
             caption=text,
             parse_mode="Markdown"
         )
@@ -207,7 +207,7 @@ def handle_text(message):
                 )
             )
 
-            bot.send_message(chat_id, "✅ Em đã nhận đủ thông tin, em xử lý và cộng điểm cho mình ngay nhé ạ ❤️ Thời gian hỗ trợ nhanh nhất là (13h~22h hàng ngày ạ, nhắn tin telegram của CSKH @bechangne141 hỗ trợ nhanh nhất )")
+            bot.send_message(chat_id, "✅ Em đã nhận đủ thông tin, em xử lý và cộng điểm cho mình ngay nhé ạ ❤️")
         except Exception as e:
             print("Lỗi gửi admin:", e)
             bot.send_message(chat_id, "⚠️ Em gửi thông tin bị lỗi, mình đợi em 1 chút hoặc nhắn CSKH giúp em nhé ạ.")
@@ -240,13 +240,13 @@ def handle_text(message):
             "Mình vào U888 lên vốn theo mốc để nhận khuyến mãi giúp em nhé.\n"
             "Lên thành công mình gửi *ảnh chuyển khoản* để em cộng điểm trực tiếp vào tài khoản cho mình ạ.\n\n"
             "Có bất cứ thắc mắc gì nhắn tin trực tiếp cho CSKH U888:\n"
-            "👉 [Bé Chang CSKH U888](https://t.me/bechangne141)\n"
+            "👉 [CSKH U888](https://t.me/BeoBungBu2807)\n"
         )
 
         try:
             bot.send_photo(
                 chat_id,
-                "AgACAgUAAxkBAAMlaU1bXkLj5Yo_QCa9VywG9olaHP0AAvcNaxu4D2hWy9CbAt7vbGABAAMCAAN5AAM2BA",
+                "AgACAgUAAxkBAAMRaU4hlJgAAd39hDqFrCelr0k2vNWPAAK1C2sbtHNxVgABCqpC2ndbCgEAAwIAA3kAAzYE",
                 caption=reply_text,
                 parse_mode="Markdown"
             )
@@ -318,12 +318,9 @@ def handle_media(message):
 # ================== WEBHOOK FLASK ==================
 @server.route("/webhook", methods=['POST'])
 def telegram_webhook():
-    json_data = request.get_json(force=True)  # ✅ dict
-    print(">>> Got update:", json_data.get("update_id"))
-
-    update = telebot.types.Update.de_json(json_data)  # ✅ truyền dict
+    json_str = request.get_data().decode("utf-8")
+    update = telebot.types.Update.de_json(json_str)
     bot.process_new_updates([update])
-
     return "OK", 200
 
 
