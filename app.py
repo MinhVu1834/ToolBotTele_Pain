@@ -318,9 +318,12 @@ def handle_media(message):
 # ================== WEBHOOK FLASK ==================
 @server.route("/webhook", methods=['POST'])
 def telegram_webhook():
-    json_str = request.get_data().decode("utf-8")
-    update = telebot.types.Update.de_json(json_str)
+    json_data = request.get_json(force=True)  # ✅ dict
+    print(">>> Got update:", json_data.get("update_id"))
+
+    update = telebot.types.Update.de_json(json_data)  # ✅ truyền dict
     bot.process_new_updates([update])
+
     return "OK", 200
 
 
